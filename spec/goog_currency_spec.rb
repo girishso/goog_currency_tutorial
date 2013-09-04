@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-
+require 'goog_currency'
 require 'fakeweb'
 
 valid_response =<<-VALID
