@@ -12,7 +12,12 @@ RSpec.configure do |config|
 end
 
 describe 'currency converter' do
-  it "loads currency converter form"
+  it "loads currency converter form" do
+    visit "/"
+    page.should have_content("Currency Converter")
+    find('form').should have_button('Convert')
+  end
+
   it "converts currencies"
   it "handles errors"
 end
