@@ -1,7 +1,21 @@
 %h1 Currency Converter
 
 %form(action = "/convert" method = "post")
+  %fieldset
+    %legend
+    From
+    %input#amount(name="amount")
+
+    %select#from(name="from")
+      %option(value="inr") INR
+      %option(value="usd") USD
+      %option(value="eur") EUR
+
+    To
+    %select#to(name="to")
+      %option(value="inr") INR
+      %option(value="usd") USD
+      %option(value="eur") EUR
 
     %input#convert(type="submit" value="Convert")
-
 
