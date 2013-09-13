@@ -5,6 +5,10 @@ get "/" do
 end
 
 post "/convert" do
-  @result = GoogCurrency.send("#{params[:from]}_to_#{params[:to]}".to_sym, params[:amount])
+  begin
+    @result = GoogCurrency.send("#{params[:from]}_to_#{params[:to]}".to_sym, params[:amount])
+  rescue Exception => ex
+    @error = ex.message
+  end
   haml :"convert"
 end

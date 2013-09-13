@@ -1,6 +1,9 @@
-%div
-  #{params[:amount]} #{params[:from]} =
-  %span#result= @result
-  #{params[:to]}
+-if @error
+  #error= @error
+-else
+  %div
+    #{params[:amount]} #{params[:from]} =
+    %span#result= @result
+    #{params[:to]}
 
 %a(href="/") Back
