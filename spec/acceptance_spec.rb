@@ -37,6 +37,23 @@ describe 'currency converter' do
     find("#result").should have_content('54.836587')
   end
 
-  it "handles errors"
+  it "handles errors" do
+    invalid_response =<<-INVALID
+    {lhs: "",rhs: "",error: "4",icc: false}
+    INVALID
+    FakeWeb.register_uri(:get,
+                         "http://www.google.com/ig/calculator?hl=en&q=xyzUSD=?INR",
+                         :status => "200",
+                         :body => invalid_response)
+
+    visit '/'
+
+    fill_in "amount", :with => "xyz"
+    select "USD", :from => "from"
+    select "INR", :from => "to"
+    click_button 'Convert'
+
+    find("#error").should have_content("An error occurred: 4")
+  end
 end
 
