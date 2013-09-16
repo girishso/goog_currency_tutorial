@@ -19,4 +19,14 @@ module GoogCurrency
       raise "An error occurred: #{response_hash['error']}"
     end
   end
+
+  def self.respond_to?(meth)
+  from, to = meth.to_s.split("_to_")
+
+  if from.nil? or from == "" or to.nil? or to == ""
+    super
+  else
+    true
+  end
+  end
 end
